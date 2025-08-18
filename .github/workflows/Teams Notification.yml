@@ -1,0 +1,17 @@
+name: Notify Teams
+
+on:
+  workflow_dispatch:
+
+jobs:
+  notify-teams:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Teams Message
+        run: python scripts/send_teams_message.py
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          TENANT_ID: ${{ secrets.TENANT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}

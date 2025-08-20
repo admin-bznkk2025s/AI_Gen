@@ -2,9 +2,9 @@ from msal import ConfidentialClientApplication
 import requests
 
 # Setup credentials
-client_id = "YOUR_CLIENT_ID"
-client_secret = "YOUR_CLIENT_SECRET"
-tenant_id = "YOUR_TENANT_ID"
+client_id = "AZURE_CLIENT_ID"
+client_secret = "AZURE_CLIENT_SECRET"
+tenant_id = "AZURE_TENANT_ID"
 
 # Get token
 app = ConfidentialClientApplication(

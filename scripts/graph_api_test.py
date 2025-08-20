@@ -4,7 +4,7 @@ import requests
 # Setup credentials
 client_id = "AZURE_CLIENT_ID"
 client_secret = "AZURE_CLIENT_SECRET"
-tenant_id = "AZURE_TENANT_ID"
+tenant_id = "27f15384-cfc8-4f6c-b768-d0f59c1de5af"
 
 # Get token
 app = ConfidentialClientApplication(

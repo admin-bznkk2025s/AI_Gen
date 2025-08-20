@@ -1,14 +1,16 @@
-
-name: Schedule Office365 Meeting
+name: Schedule Meeting Summary Workflow
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'  # รันทุกวันเวลา 00:00
+  workflow_dispatch:     # สามารถรันด้วยมือได้จาก GitHub UI
 
 jobs:
-  schedule-meeting:
+  summarize_meeting:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -17,12 +19,9 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install requests msal
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Run meeting scheduler
-        run: python scripts/schedule_meeting.py
-        env:
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          TENANT_ID: ${{ secrets.TENANT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+      - name: Run meeting summarizer
+        run: python scripts/main.py summarize_meeting

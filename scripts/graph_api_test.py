@@ -4,7 +4,7 @@ import requests
 # Setup credentials
 client_id = "AZURE_CLIENT_ID"
 client_secret = "AZURE_CLIENT_SECRET"
-tenant_id = "secrets.AZURE_TENANT_ID"
+tenant_id = "secrets.TENANT_ID"
 
 # Create MSAL app
 app = ConfidentialClientApplication(

@@ -34,7 +34,7 @@ if "access_token" in token:
     access_token = token["access_token"]
 
     # Replace with actual user email or ID
-    user_id = "user@example.com"
+    user_id = "bznkk2000_hotmail.com#EXT#@bznkk2000hotmail.onmicrosoft.com"
     headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.get(
         f"https://graph.microsoft.com/v1.0/users/{user_id}/calendar/events",

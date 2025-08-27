@@ -1,0 +1,23 @@
+name: Summarize Teams Meeting
+
+on:
+  workflow_dispatch:
+    inputs:
+      transcript:
+        description: 'Transcript from Teams meeting'
+        required: true
+
+  schedule:
+    - cron: '0 0 * * *'  # รันทุกวันเวลา 00:00 UTC (เที่ยงคืน)
+
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    env:
+      AZURE_FUNCTION_URL: ${{ secrets.AZURE_FUNCTION_URL }}
+    steps:
+      - name: Call Azure Function
+        run: |
+          curl -X POST $AZURE_FUNCTION_URL \
+            -H "Content-Type: application/json" \
+            -d '{"transcript": "Transcript from scheduled run"}'
